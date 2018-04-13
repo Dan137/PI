@@ -6,7 +6,7 @@
 package Model.DAO;
 
 import java.util.ArrayList;
-import model.entidade.Produto;
+import Model.entidade.Produto;
 import Model.util.HibernateUtil;
 import java.util.List;
 import org.hibernate.Session;

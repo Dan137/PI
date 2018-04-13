@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package model.entidade;
+package Model.entidade;
 
 import java.io.Serializable;
 import javax.persistence.Column;
@@ -19,7 +19,7 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "produto")
-public class Produto implements Serializable {
+public class Produto implements Serializable{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

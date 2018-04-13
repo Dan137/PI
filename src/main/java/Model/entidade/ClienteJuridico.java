@@ -25,8 +25,6 @@ public class ClienteJuridico extends Cliente{
         this.cnpj = cnpj;
     }
 
-   
-
     /**
      * @return the cnpj
      */

@@ -5,7 +5,6 @@
  */
 package Model.Teste;
 
-import Model.entidade.Cliente;
 import controller.Controler;
 import java.text.SimpleDateFormat;
 import java.util.Date;

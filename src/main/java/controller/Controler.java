@@ -6,12 +6,14 @@
 package controller;
 
 import Model.DAO.ClienteDao;
+import Model.DAO.EnderecoDao;
 import Model.DAO.FuncionarioDao;
 import Model.DAO.ProdutoDAO;
 import Model.entidade.Cliente;
+import Model.entidade.Endereco;
 import Model.entidade.Funcionario;
 import java.util.List;
-import model.entidade.Produto;
+import Model.entidade.Produto;
 
 /**
  *
@@ -86,5 +88,14 @@ public class Controler {
 
     public void removerFuncionario(Funcionario funcionario) {
         FuncionarioDao.getInstance().deletar(funcionario);
+    }
+    
+    
+    // ==============================CONTROLER DE ENDERECO=============================
+     public void cadEndereco(Endereco endereco) {
+        EnderecoDao.getInstance().inserir(endereco);
+    }
+     public void alteraEndereco(Endereco endereco) {
+        EnderecoDao.getInstance().alterar(endereco);
     }
 }
