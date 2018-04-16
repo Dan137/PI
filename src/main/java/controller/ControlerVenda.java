@@ -13,8 +13,7 @@ import Model.entidade.Vendas;
  * @author Daniel
  */
 public class ControlerVenda {
-    
-    public void cadastrarVenda(Vendas v){
-        VendaDao.getInstance().inserir(v);
-    }
+   public void cadVenda(Vendas venda){
+       VendaDao.getInstance().inserir(venda);
+   } 
 }

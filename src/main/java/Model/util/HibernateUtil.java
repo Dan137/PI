@@ -6,8 +6,10 @@
 package Model.util;
 
 import Model.entidade.Cliente;
+import Model.entidade.ClienteJuridico;
 import Model.entidade.Endereco;
 import Model.entidade.Funcionario;
+import Model.entidade.ItensVendas;
 import Model.entidade.Produto;
 import Model.entidade.Vendas;
 import org.hibernate.HibernateException;
@@ -41,6 +43,8 @@ public class HibernateUtil {
             metadataSources.addAnnotatedClass(Funcionario.class);
             metadataSources.addAnnotatedClass(Endereco.class);
             metadataSources.addAnnotatedClass(Vendas.class);
+            metadataSources.addAnnotatedClass(ItensVendas.class);
+            metadataSources.addAnnotatedClass(ClienteJuridico.class);
             
             Metadata metadata = metadataSources.buildMetadata(builder.build());
             sessionFactory = metadata.buildSessionFactory();    

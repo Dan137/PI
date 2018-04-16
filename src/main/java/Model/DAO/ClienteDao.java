@@ -6,6 +6,7 @@
 package Model.DAO;
 
 import Model.entidade.Cliente;
+import Model.entidade.ClienteJuridico;
 import Model.util.HibernateUtil;
 import java.util.ArrayList;
 import java.util.List;
@@ -50,7 +51,20 @@ public class ClienteDao implements DaoGenerico<Cliente> {
         }
     }
 
-    @Override
+     public void inserirClieJuri(ClienteJuridico cj) {
+        sessionFactory = HibernateUtil.getSessionFactory();
+        session = sessionFactory.openSession();
+        Transaction transaction = session.beginTransaction();
+        try {
+            session.save(cj);
+            transaction.commit();
+        } catch (Exception e) {
+            System.out.println("Erro ao Inserir um ClienteJuridico!");
+        } finally {
+            session.close();
+        }
+    }
+       
     public void alterar(Cliente t) {
         sessionFactory = HibernateUtil.getSessionFactory();
         session = sessionFactory.openSession();

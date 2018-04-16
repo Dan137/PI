@@ -12,28 +12,39 @@ import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
 
 /**
  *
  * @author Daniel
  */
 @Entity
-@Table(name="venda")
-public class Vendas implements Serializable{
+@Table(name = "venda")
+public class Vendas implements Serializable {
+
     @Id
     @GeneratedValue
     private int codigo;
+    @Temporal(javax.persistence.TemporalType.DATE)
     private Date dataVenda;
-    private double valorTotal;
+    @Temporal(javax.persistence.TemporalType.DATE)
     private Date dataPagamento;
+    @ManyToOne
+    @JoinColumn(name = "ItensVendas")
+    private ItensVendas itemVenda;
+    @OneToOne
+    private Cliente cliente;
 
-    public Vendas(int codigo, Date dataVenda, double valorTotal,  Date dataPagamento) {
+    public Vendas(int codigo, Date dataVenda, Date dataPagamento, ItensVendas itemVenda, Cliente cliente) {
         this.dataVenda = dataVenda;
-        this.valorTotal = valorTotal;
         this.codigo = codigo;
         this.dataPagamento = dataPagamento;
-
+        this.itemVenda=itemVenda;
+        this.cliente=cliente;
     }
 
     public Vendas() {
@@ -52,20 +63,6 @@ public class Vendas implements Serializable{
      */
     public void setDataVenda(Date dataVenda) {
         this.dataVenda = dataVenda;
-    }
-
-    /**
-     * @return the valorTotal
-     */
-    public double getValorTotal() {
-        return valorTotal;
-    }
-
-    /**
-     * @param valorTotal the valorTotal to set
-     */
-    public void setValorTotal(double valorTotal) {
-        this.valorTotal = valorTotal;
     }
 
     /**
@@ -89,8 +86,23 @@ public class Vendas implements Serializable{
         return dataPagamento;
     }
 
-       
-    public  void atualizaQuantidadeProdutos(List<Produto> produtos) {
+    public ItensVendas getItemVenda() {
+        return itemVenda;
+    }
+
+    public void setItemVenda(ItensVendas itemVenda) {
+        this.itemVenda = itemVenda;
+    }
+
+    public Cliente getCliente() {
+        return cliente;
+    }
+
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
+    }
+    
+    public void atualizaQuantidadeProdutos(List<Produto> produtos) {
         Controler controler = new Controler();
         List<Produto> produtosBanco = controler.listarProdutos();
         Produto produt = new Produto();
@@ -106,8 +118,5 @@ public class Vendas implements Serializable{
         }
 
     }
-    public double caclValorTotal(){
-//        calcula Valor total da venda
-        return this.valorTotal;
-    }
+
 }

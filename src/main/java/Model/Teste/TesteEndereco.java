@@ -5,6 +5,7 @@
  */
 package Model.Teste;
 
+import Model.entidade.Endereco;
 import controller.Controler;
 
 /**
@@ -16,8 +17,8 @@ public class TesteEndereco {
         Controler controler = new Controler();
         
 //        ----------------- CADASTRA ENDERECO!! ---------------------------
-//        Endereco enderecoCliente = new Endereco("Rua C", 5, "centro", "Paranatama-PE", "55-355-00");       
-//        controler.cadEndereco(enderecoCliente);
+        Endereco enderecoCliente = new Endereco("Rua C", 5, "centro", "Paranatama-PE", "55-355-00");       
+        controler.cadEndereco(enderecoCliente);
 //
 //        Endereco enderecoFuncionario = new Endereco("Rua C", 6, "centro", "Paranatama-PE", "55-355-00");       
 //        controler.cadEndereco(enderecoFuncionario);

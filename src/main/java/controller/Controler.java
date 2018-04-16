@@ -6,10 +6,12 @@
 package controller;
 
 import Model.DAO.ClienteDao;
+import Model.DAO.ClienteJuriDao;
 import Model.DAO.EnderecoDao;
 import Model.DAO.FuncionarioDao;
 import Model.DAO.ProdutoDAO;
 import Model.entidade.Cliente;
+import Model.entidade.ClienteJuridico;
 import Model.entidade.Endereco;
 import Model.entidade.Funcionario;
 import java.util.List;
@@ -24,7 +26,7 @@ public class Controler {
     public Controler() {
 
     }
- // ==============================CONTROLER DE PRODUTO=============================
+    // ==============================CONTROLER DE PRODUTO=============================
 
     public void inserir(Produto produto) {
         ProdutoDAO.getInstance().inserir(produto);
@@ -50,6 +52,10 @@ public class Controler {
     // ==============================CONTROLER DE CLIENTE=============================
     public void inserirCliente(Cliente cliente) {
         ClienteDao.getInstance().inserir(cliente);
+
+    }
+    public void inserirClienteJuri(ClienteJuridico clienteJuri) {
+        ClienteJuriDao.getInstance().inserir(clienteJuri);
 
     }
 
@@ -89,13 +95,17 @@ public class Controler {
     public void removerFuncionario(Funcionario funcionario) {
         FuncionarioDao.getInstance().deletar(funcionario);
     }
-    
-    
+
     // ==============================CONTROLER DE ENDERECO=============================
-     public void cadEndereco(Endereco endereco) {
+    public void cadEndereco(Endereco endereco) {
         EnderecoDao.getInstance().inserir(endereco);
     }
-     public void alteraEndereco(Endereco endereco) {
+
+    public void alteraEndereco(Endereco endereco) {
         EnderecoDao.getInstance().alterar(endereco);
+    }
+
+    public Endereco getEndereco(int numero) {
+        return (Endereco) EnderecoDao.getInstance().recuperar(numero);
     }
 }

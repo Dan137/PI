@@ -7,11 +7,12 @@ package Model.Teste;
 
 import Model.entidade.Produto;
 import Model.entidade.Vendas;
+import controller.Controler;
+import controller.ControlerItemVenda;
 import controller.ControlerVenda;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 
 /**
  *
@@ -28,8 +29,9 @@ public class TesteVenda {
         fazer uma lógica para que no final da venda o sistema fazer uma contagem de produtos vendidos e adicionar na lista
         ou diminuir um a cada condição satisfeita?
          */
-        ControlerVenda cv = new ControlerVenda();
-        
+        ControlerItemVenda cv = new ControlerItemVenda();
+        ControlerVenda ctrlVenda = new ControlerVenda();
+        Controler c = new Controler();
 //        CADASTRA VENDA
           Date dataVenda = new Date();
           Date dataPagamento = new Date();
@@ -37,8 +39,9 @@ public class TesteVenda {
           String datVend = sdf.format(dataVenda);
           String datPagam = sdf.format(dataPagamento);
           
-          Vendas vend = new Vendas(0, dataVenda, 10 , dataPagamento);
-          cv.cadastrarVenda(vend);
+          
+          Vendas vend = new Vendas(0, dataVenda, dataPagamento, cv.findIDitemVenda(16), c.findIDCliente(6));
+          ctrlVenda.cadVenda(vend);
           
                   
           

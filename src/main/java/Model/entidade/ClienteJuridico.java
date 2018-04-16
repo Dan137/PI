@@ -5,19 +5,28 @@
  */
 package Model.entidade;
 
+import java.io.Serializable;
 import java.util.Date;
+import javax.persistence.Entity;
+import javax.persistence.Table;
 
 /**
  *
  * @author Daniel
  */
-public class ClienteJuridico extends Cliente{
+@Entity
+@Table(name="clientJuridico")
+
+public class ClienteJuridico extends Cliente implements Serializable{
 //    duvida
-   
+    
     private String cnpj;
 
-    public ClienteJuridico(String cnpj, Integer codigo, String nome, Date dataAbertura, String cpf, String pai, String mae, String email, String telefone) {
-        super(codigo, nome, dataAbertura, cpf, pai, mae, email, telefone);
+    public ClienteJuridico() {
+    }
+
+    public ClienteJuridico(String cnpj, Integer codigo, String nome, Date dataAbertura, String cpf, String pai, String mae, String email, String telefone, Endereco endereco) {
+        super(codigo, nome, dataAbertura, cpf, pai, mae, email, telefone, endereco);
         this.cnpj = cnpj;
     }
 

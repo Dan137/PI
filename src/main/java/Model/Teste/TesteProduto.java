@@ -5,9 +5,14 @@
  */
 package Model.Teste;
 
+import Model.entidade.ItensVendas;
 import controller.Controler;
 
 import Model.entidade.Produto;
+import Model.entidade.Vendas;
+import controller.ControlerItemVenda;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -16,16 +21,17 @@ import Model.entidade.Produto;
 public class TesteProduto {
 
     public static void main(String[] args) {
-        Produto produto;
-        Produto produto2;
-        Controler produtoControlle = new Controler();
+
+        ControlerItemVenda ctrl = new ControlerItemVenda();
+        Controler c = new Controler();
+        TesteProduto.cadItemVend(ctrl);
 //      CADASTRA PRODUTO
-        
-        produto = new Produto(0, "Arroz", 1.45, 10);
-        produtoControlle.inserir(produto);
-        
-         produto2 = new Produto(0, "macarrão", 2.4, 20);
-        produtoControlle.inserir(produto2);
+
+        Produto produto = new Produto(0, "arroz", 1.25, 20, "serial", ctrl.findIDitemVenda(19));
+        c.inserir(produto);
+
+//        produto2 = new Produto(0, "macarrão", 2.4, 20);
+//        produtoControlle.inserir(produto2);
 //       ATUALIZA PRODUTO
         /*
         produto = new Produto(2, "Daniel", 2.00, 200);
@@ -57,6 +63,37 @@ public class TesteProduto {
 //String str = " "; 
 //str+= "codigo: "+ produto.getCodigo()+"\n nome: " + produto.getNome()+"\n preço: " + produto.getPreco()+ "\n quantidade: " + produto.getQuantidade();
 //System.out.println(str);
+    }
+
+    public static void cadItemVend(ControlerItemVenda ctrl) {
+        ItensVendas iv = new ItensVendas(0, 2, 12.5, TesteProduto.listaDeProdVendidos(), TesteProduto.listaDeVendas());
+        ctrl.cadastrarItemVenda(iv);
+    }
+
+    public static List<Produto> listaDeProdVendidos() {
+        List<Produto> lstProd;
+        lstProd = new ArrayList();
+        Produto p = new Produto();
+
+        lstProd.add(p);
+
+
+        return lstProd;
+    }
+
+    public static List<Vendas> listaDeVendas() {
+        List<Vendas> vendas = new ArrayList();
+        Vendas iv = new Vendas();
+//        ItensVendas iv2 = new ItensVendas();
+//        ItensVendas iv3 = new ItensVendas();
+//        ItensVendas iv4 = new ItensVendas();
+
+//        itvendas.add(iv);
+//        itvendas.add(iv2);
+//        itvendas.add(iv3);
+        vendas.add(iv);
+
+        return vendas;
     }
 
 }

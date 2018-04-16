@@ -53,5 +53,7 @@ Contributor(s):
     <mapping class="Model.entidade.Funcionario"/>
     <mapping class="Model.entidade.Endereco"/>
     <mapping class="Model.entidade.Vendas"/>
+    <mapping class="Model.entidade.ClienteJuridico"/>
+    <mapping class="Model.entidade.ItensVendas"/>
   </session-factory>
 </hibernate-configuration>

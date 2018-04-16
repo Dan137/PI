@@ -11,6 +11,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 /**
@@ -24,20 +25,23 @@ public class Funcionario implements Serializable {
     @GeneratedValue
     @Id
     private int codigo;
-    @Column (length=70)
+    @Column(length = 70)
     private String nome;
-    @Column (length = 35)
+    @Column(length = 35)
     private String email;
-    @Column (length = 27)    
+    @Column(length = 27)
     private String telefone;
     private Date dataAdmissao;
+    @OneToOne()
+    private Endereco endereco;
 
-    public Funcionario(String nome, int codigo, String email, String telefone, Date dataAdmissao) {
+    public Funcionario(String nome, int codigo, String email, String telefone, Date dataAdmissao, Endereco endereco) {
         this.nome = nome;
         this.codigo = codigo;
         this.email = email;
         this.telefone = telefone;
         this.dataAdmissao = dataAdmissao;
+        this.endereco = endereco;
     }
 
     public Funcionario() {

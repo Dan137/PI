@@ -10,6 +10,9 @@ import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 /**
@@ -18,6 +21,7 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "cliente")
+@Inheritance( strategy = InheritanceType.JOINED )
 public class Cliente implements Serializable{
     @GeneratedValue()
     @Id
@@ -29,8 +33,10 @@ public class Cliente implements Serializable{
     private String mae;
     private String email;
     private String telefone;
-
-    public Cliente( Integer codigo, String nome, Date dataAbertura, String cpf, String pai, String mae, String email, String telefone) {
+    @OneToOne()
+    private Endereco endereco;
+    
+    public Cliente( Integer codigo, String nome, Date dataAbertura, String cpf, String pai, String mae, String email, String telefone, Endereco endereco) {
        
         this.codigo= codigo;
         this.nome = nome;
@@ -40,6 +46,7 @@ public class Cliente implements Serializable{
         this.email = email;
         this.telefone = telefone;
         this.cpf=cpf;
+        this.endereco=endereco;
     }
 
     public Cliente() {
@@ -152,6 +159,14 @@ public class Cliente implements Serializable{
      */
     public void setCpf(String cpf) {
         this.cpf = cpf;
+    }
+
+    public Endereco getEndereco() {
+        return endereco;
+    }
+
+    public void setEndereco(Endereco endereco) {
+        this.endereco = endereco;
     }
     
 }
