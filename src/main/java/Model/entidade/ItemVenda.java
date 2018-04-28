@@ -8,8 +8,11 @@ package Model.entidade;
 import java.io.Serializable;
 import java.util.List;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -19,31 +22,37 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "itenVenda")
-public class ItensVendas implements Serializable {
+public class ItemVenda implements Serializable {
 
 
     @Id
     @GeneratedValue
     private int id;
+   
     private int quantidade;
+    
     private double valorTot;
-    @OneToMany (mappedBy="itemVenda")
-    private List<Produto> produtos;
-    @OneToMany (mappedBy="itemVenda")
-    private List<Vendas> vendas;
+    
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "codigo_produto")
+    private Produto produto;
+    
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "codigo_venda")
+    private Venda venda;
    
     
      
-    public ItensVendas() {
+    public ItemVenda() {
     }
 
-    public ItensVendas(int id, int quantidade, double valorTot, List<Produto> produtos, List<Vendas> vendas) {
+    public ItemVenda(int id, int quantidade, double valorTot, Produto produto, Venda venda) {
 
         this.id = id;
         this.quantidade = quantidade;
         this.valorTot = valorTot;
-        this.produtos=produtos;
-        this.vendas =vendas;
+        this.produto=produto;
+        this.venda =venda;
     }
 
 
@@ -72,20 +81,20 @@ public class ItensVendas implements Serializable {
         this.valorTot = valorTot;
     }
 
-    public List<Produto> getProdutos() {
-        return produtos;
+    public Produto getProduto() {
+        return produto;
     }
 
-    public void setProdutos(List<Produto> produtos) {
-        this.produtos = produtos;
+    public void setProduto(Produto produto) {
+        this.produto = produto;
     }
 
-    public List<Vendas> getVendas() {
-        return vendas;
+    public Venda getVenda() {
+        return venda;
     }
 
-    public void setVendas(List<Vendas> vendas) {
-        this.vendas = vendas;
+    public void setVenda(Venda venda) {
+        this.venda = venda;
     }
 
    

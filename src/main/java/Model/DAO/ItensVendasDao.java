@@ -5,7 +5,7 @@
  */
 package Model.DAO;
 
-import Model.entidade.ItensVendas;
+import Model.entidade.ItemVenda;
 import Model.util.HibernateUtil;
 import java.util.ArrayList;
 import java.util.List;
@@ -17,11 +17,11 @@ import org.hibernate.Transaction;
  *
  * @author Daniel
  */
-public class ItensVendasDao implements DaoGenerico<ItensVendas> {
+public class ItensVendasDao implements DaoGenerico<ItemVenda> {
 
     private Session session;
     private SessionFactory sessionFactory;
-    private List<ItensVendas> consulta;
+    private List<ItemVenda> consulta;
     private static DaoGenerico instance;
 
     public static DaoGenerico getInstance() {
@@ -36,7 +36,7 @@ public class ItensVendasDao implements DaoGenerico<ItensVendas> {
     }
 
     @Override
-    public void inserir(ItensVendas t) {
+    public void inserir(ItemVenda t) {
         sessionFactory = HibernateUtil.getSessionFactory();
         session = sessionFactory.openSession();
         Transaction transaction = session.beginTransaction();
@@ -51,13 +51,13 @@ public class ItensVendasDao implements DaoGenerico<ItensVendas> {
     }
 
     @Override
-    public void alterar(ItensVendas t) {
+    public void alterar(ItemVenda t) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public ItensVendas recuperar(int codigo) {
-        ItensVendas iv = new ItensVendas();
+    public ItemVenda recuperar(int codigo) {
+        ItemVenda iv = new ItemVenda();
         sessionFactory = HibernateUtil.getSessionFactory();
         session = sessionFactory.openSession();
         Transaction transaction = session.beginTransaction();
@@ -74,12 +74,12 @@ public class ItensVendasDao implements DaoGenerico<ItensVendas> {
     }
 
     @Override
-    public void deletar(ItensVendas t) {
+    public void deletar(ItemVenda t) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public List<ItensVendas> recuperarTodos() {
+    public List<ItemVenda> recuperarTodos() {
         return null;
     }
 

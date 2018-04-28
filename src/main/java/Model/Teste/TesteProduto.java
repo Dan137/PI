@@ -5,11 +5,11 @@
  */
 package Model.Teste;
 
-import Model.entidade.ItensVendas;
+import Model.entidade.ItemVenda;
 import controller.Controler;
 
 import Model.entidade.Produto;
-import Model.entidade.Vendas;
+import Model.entidade.Venda;
 import controller.ControlerItemVenda;
 import java.util.ArrayList;
 import java.util.List;
@@ -24,11 +24,14 @@ public class TesteProduto {
 
         ControlerItemVenda ctrl = new ControlerItemVenda();
         Controler c = new Controler();
-        TesteProduto.cadItemVend(ctrl);
-//      CADASTRA PRODUTO
 
-        Produto produto = new Produto(0, "arroz", 1.25, 20, "serial", ctrl.findIDitemVenda(19));
-        c.inserir(produto);
+//      CADASTRA PRODUTO
+        Produto p1 = new Produto(0, "arroz", 1.25, 20, "serial");
+        Produto p2 = new Produto(0, "macarrão", 1.25, 20, "serial");
+        Produto p3 = new Produto(0, "café", 1.25, 20, "serial");
+        c.inserir(p1);
+        c.inserir(p2);
+        c.inserir(p3);
 
 //        produto2 = new Produto(0, "macarrão", 2.4, 20);
 //        produtoControlle.inserir(produto2);
@@ -63,37 +66,6 @@ public class TesteProduto {
 //String str = " "; 
 //str+= "codigo: "+ produto.getCodigo()+"\n nome: " + produto.getNome()+"\n preço: " + produto.getPreco()+ "\n quantidade: " + produto.getQuantidade();
 //System.out.println(str);
-    }
-
-    public static void cadItemVend(ControlerItemVenda ctrl) {
-        ItensVendas iv = new ItensVendas(0, 2, 12.5, TesteProduto.listaDeProdVendidos(), TesteProduto.listaDeVendas());
-        ctrl.cadastrarItemVenda(iv);
-    }
-
-    public static List<Produto> listaDeProdVendidos() {
-        List<Produto> lstProd;
-        lstProd = new ArrayList();
-        Produto p = new Produto();
-
-        lstProd.add(p);
-
-
-        return lstProd;
-    }
-
-    public static List<Vendas> listaDeVendas() {
-        List<Vendas> vendas = new ArrayList();
-        Vendas iv = new Vendas();
-//        ItensVendas iv2 = new ItensVendas();
-//        ItensVendas iv3 = new ItensVendas();
-//        ItensVendas iv4 = new ItensVendas();
-
-//        itvendas.add(iv);
-//        itvendas.add(iv2);
-//        itvendas.add(iv3);
-        vendas.add(iv);
-
-        return vendas;
     }
 
 }

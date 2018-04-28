@@ -6,15 +6,11 @@
 package Model.entidade;
 
 import java.io.Serializable;
-import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 /**
@@ -29,29 +25,26 @@ public class Produto implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "codProd")
     private Integer codigo;
+    
     @Column(length = 50)
+    
     private String nome;
     private Double preco;
+    
     @Column(length = 20)
     private Integer quantidade;
+    
     private String tipo;
-
-    @ManyToOne
-    @JoinColumn(name = "ItemVenda")
-    private ItensVendas itemVenda;
-
-    /*@ManyToOne*/
-    //private Categoria categoria;
-    /*@ManyToMany*/
-    //private List<Produto> produtos;
-    public Produto(Integer codigo, String nome, Double preco, Integer quantidade, String tipo, ItensVendas itemVenda) {
+    
+    public Produto(Integer codigo, String nome, Double preco, Integer quantidade, String tipo) {
 
         this.codigo = codigo;
         this.nome = nome;
         this.preco = preco;
         this.tipo = tipo;
         this.quantidade = quantidade;
-        this.itemVenda = itemVenda;
+        
+        
 
     }
 
@@ -95,18 +88,5 @@ public class Produto implements Serializable {
         return tipo;
     }
 
-    public void setTipo(String tipo) {
-        this.tipo = tipo;
-    }
-
-    public ItensVendas getItemVenda() {
-        return itemVenda;
-    }
-
-    public void setItemVenda(ItensVendas itemVenda) {
-        this.itemVenda = itemVenda;
-    }
-
-    
 
 }

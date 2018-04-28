@@ -6,14 +6,14 @@
 package controller;
 
 import Model.DAO.VendaDao;
-import Model.entidade.Vendas;
+import Model.entidade.Venda;
 
 /**
  *
  * @author Daniel
  */
 public class ControlerVenda {
-   public void cadVenda(Vendas venda){
+   public void cadVenda(Venda venda){
        VendaDao.getInstance().inserir(venda);
    } 
 }
